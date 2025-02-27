@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronics and IOT Club </title>
+    <link rel="icon" href="/resources/pixelcut-export.png" type="image/x-icon"/>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .navbar {
+            
+            position: fixed;
+            width: 100%;
+            z-index: 1001;
+            transition: background-color 0.3s ease;
+        }
+        .navbar.scrolled {
+            background-image: url(/resources/vecteezy_vector-abstract-background-hexagons-design-science_7872256.jpg); /* Background color on scroll */
+        }
+        .navbar-brand{
+            padding: 0px;;
+        }
+        .home-container{
+            width: 100%;
+            height: 100vh;
+            background-image :url('/resources/image.jpg');
+            background-size: cover; /* This makes the image cover the entire div */
+            background-repeat: no-repeat; /* This prevents the image from repeating */
+            background-position: center;
+            display: grid;
+            grid-template-columns: 50px 1fr 1fr;
+            grid-template-rows: 1fr 2fr;
+        }
+        .logo{
+            position: relative;
+            top: 150px;
+            display: flex;
+            width: 100%;
+            align-items: flex-start;
+            justify-content: flex-end;
+            
+        }
+        
+        .social-container{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: sticky;
+        }  
+        .social-container>div{
+            margin-bottom: 20px;
+
+        }
+        .btn-nav{
+          background-color: transparent;
+          border-radius: 10px;
+          margin-top: 3px;
+          font-size: larger;
+          border: 0px;
+          cursor: pointer;
+          transition: background-color 0.3s, color 0.3s;
+
+        }
+        .btn-nav:hover{
+          background-color: rgba(255, 255, 255, 0.5); 
+          border: 1px solid;
+          padding: 5px;
+          transform: scale(1.1);
+        }
+        .btn-nav.btn-register:hover{
+          border: 3px solid red;
+          color: white;
+          background-color: darkblue;
+          padding: 10px;
+          transform: scale(1.2);
+
+        }
+
+        @media only screen and (min-width: 800px){
+        .navbar-nav {
+          display: flex;
+          align-items: center;
+          
+        }
+      }
+        .nav-item{
+            margin: 0 7px;
+            font-size: 15px;
+            font-weight: normal;
+            font-family: "Zen Dots", sans-serif;
+
+        }
+        .btn-register{
+          color: white;
+          background-color: darkblue;
+          padding: 10px;
+          overflow: hidden;
+          position: relative;
+          margin-left: 10px;
+        }
+        .container-abt{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        .social-container{
+          grid-row: span 2;
+        }
+        .home{
+          grid-area: 1/2/2/4;
+          
+        }
+        .intro-logo{
+          grid-area: 2/2/3/3;
+        }
+        
+        .intro{
+          grid-area: 2/3/3/4;
+        }
+        .intro-logo-container{
+          display: flex;
+          height: 100%;
+          align-items: center;
+          justify-content: center;
+
+        }
+        .intro-container{
+          display: flex;
+          width: 80%;
+          height: 100%;
+          align-items:flex-start;
+          padding-top: 80px;
+          justify-content: center;
+          text-align: justify;
+          word-spacing: 7px;
+        }
+        .social{
+          transition: transform 0.3s ease-in-out;
+          margin-left: 20px;
+        }
+        .social:hover{
+          transform: scale(1.5);
+        }
+        .achievements{
+          width: 100%;
+          height: 400px;
+        }
+        .carousel{
+          height: 60vh;
+          margin-top: -100px;
+          width: 100vw;
+          overflow: hidden;
+          position: relative;
+      }
+        .carousel .list .item{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            inset: 0 0 0 0;
+        }
+        .carousel .list .item img{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+      }
+        .carousel .list .item .content{
+            position: absolute;
+            top: 70%;
+            width: 1140px;
+            max-width: 80%;
+            left: 40%;
+            transform: translateX(-50%);
+            padding-right: 30%;
+            box-sizing: border-box;
+            color: #fff;
+            text-shadow: 0 5px 10px #0004;
+        }
+        .carousel .list .item .title{
+          font-size: 50px;
+          font-weight: bold;
+          line-height: 1.3em;
+          font-family: 'Oxanium';
+          margin-left: 10%;
+        }
+        .carousel .list .item .buttons button{
+          border: none;
+          border-radius: 5px;
+          background-color:orange;
+          letter-spacing: 1px;
+          font-weight: 500;
+          margin-left: 20%;
+          margin-top: 3%;
+      }
+        .teams{
+          width: 100vw;
+        }
+        .team_heading{
+          height: 100px;
+          width: 100vw;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .team_heading>div{
+         font-size: 70px;
+         font-family: 'Oxanium';
+         font-weight: bold;
+         z-index: 10;
+         margin-top: 30px;
+         letter-spacing: 2px;
+         text-shadow: 5px 5px 10px #0004;
+        }
+        
+        .thumbnail{
+          position: absolute;
+          bottom: 50px;
+          left: 60%;
+          width: max-content;
+          z-index: 100;
+          display: flex;
+          gap: 20px;
+        }
+          .thumbnail .item{
+          width: 200px;
+          height: 270px;
+          flex-shrink: 0;
+          position: relative;
+          /* border: solid black 2px;*/
+          border-radius: 20px;
+          box-shadow: 0 5px 10px black;
+        }
+          .thumbnail .item img{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 20px;
+        }
+
+        .thumbnail .item .content {
+          position: absolute;
+          bottom: 10px;
+          left: 35px;
+          right: 10px;
+        }
+        .thumbnail .item .content .title{
+          font-weight: bold;
+          color: white;
+        }
+        .arrows{
+          position: absolute;
+          top: 80%;
+          right: 52%;
+          z-index: 100;
+          width: 300px;
+          max-width: 30%;
+          display: flex;
+          gap: 10px;
+          align-items: center;
+        }
+         .arrows button{
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background-color: #eee4;
+          border: none;
+          color: #fff;
+          font-family: monospace;
+          font-weight: bold;
+          transition: .5s;
+         }
+         .arrows button:hover{
+          background-color: #fff;
+          color: #000;
+        }
+
+      /* animation */
+.carousel .list .item:nth-child(1){
+    z-index: 1;
+}
+
+/* animation text in first item */
+
+.carousel .list .item:nth-child(1) .content .title,
+.carousel .list .item:nth-child(1) .content .buttons
+{
+    transform: translateY(50px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: showContent .4s 1s linear 1 forwards;
+}
+@keyframes showContent{
+    to{
+        transform: translateY(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+.carousel .list .item:nth-child(1) .content .buttons{
+    animation-delay: 1.2s!important;
+}
+/* create animation when next click */
+.carousel.next .list .item:nth-child(1) img{
+    width: 150px;
+    height: 220px;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    border-radius: 30px;
+    animation: showImage .5s linear 1 forwards;
+}
+@keyframes showImage{
+    to{
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+
+.carousel.next .thumbnail .item:nth-last-child(1){
+    overflow: hidden;
+    animation: showThumbnail .5s linear 1 forwards;
+}
+.carousel.prev .list .item img{
+    z-index: 100;
+}
+@keyframes showThumbnail{
+    from{
+        width: 0;
+        opacity: 0;
+    }
+}
+.carousel.next .thumbnail{
+    animation: effectNext .5s linear 1 forwards;
+}
+
+@keyframes effectNext{
+    from{
+        transform: translateX(150px);
+    }
+}
+
+/* running time */
+
+.carousel .time{
+    position: absolute;
+    z-index: 1000;
+    width: 0%;
+    height: 3px;
+    background-color: #f1683a;
+    left: 0;
+    top: 0;
+}
+
+.carousel.next .time,
+.carousel.prev .time{
+    animation: runningTime 3s linear 1 forwards;
+}
+@keyframes runningTime{
+    from{ width: 100%}
+    to{width: 0}
+}
+
+
+/* prev click */
+
+.carousel.prev .list .item:nth-child(2){
+    z-index: 2;
+}
+
+.carousel.prev .list .item:nth-child(2) img{
+    animation: outFrame 0.5s linear 1 forwards;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+@keyframes outFrame{
+    to{
+        width: 250px;
+        height: 320px;
+        bottom: 50px;
+        left: 50%;
+        border-radius: 20px;
+    }
+}
+
+.carousel.prev .thumbnail .item:nth-child(1){
+    overflow: hidden;
+    opacity: 0;
+    animation: showThumbnail .5s linear 1 forwards;
+}
+.carousel.next .arrows button,
+.carousel.prev .arrows button{
+    pointer-events: none;
+}
+.carousel.prev .list .item:nth-child(2) .content .author,
+.carousel.prev .list .item:nth-child(2) .content .title,
+.carousel.prev .list .item:nth-child(2) .content .topic,
+.carousel.prev .list .item:nth-child(2) .content .des,
+.carousel.prev .list .item:nth-child(2) .content .buttons
+{
+    animation: contentOut 1.5s linear 1 forwards!important;
+}
+
+@keyframes contentOut{
+    to{
+        transform: translateY(-150px);
+        filter: blur(20px);
+        opacity: 0;
+    }
+}
+@media screen and (max-width: 678px) {
+    .carousel .list .item .content{
+        padding-right: 0;
+    }
+    .carousel .list .item .content .title{
+        font-size: 30px;
+    }
+}
+
+.break{
+  height: 5px;
+}
+
+       
+  
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gupter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gupter:wght@400;500;700&family=Zen+Dots&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gupter:wght@400;500;700&family=Oxanium:wght@200..800&family=Zen+Dots&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gupter:wght@400;500;700&family=Oxanium:wght@200..800&family=Raleway+Dots&family=Zen+Dots&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><img src="/resources/pixelcut-export.png" height="60px" > </span></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                  <button type="button" class="btn-nav btn-home">Home</button>
+              </li>
+              <li class="nav-item">
+                  <button type="button" class="btn-nav btn-achievements">Achievements</button>
+              </li>
+              <li class="nav-item">
+                  <button type="button" class="btn-nav btn-blogs">Blogs</button>
+              </li>
+              <li class="nav-item">
+                  <button type="button" class="btn-nav btn-team">Team</button>
+              </li>
+              <li class="nav-item">
+                  <button type="button" class="btn-nav btn-projects">Projects</button>
+              </li>
+              <li class="nav-item">
+                <button type="button" class="btn-nav btn-contact">Contact Us</button>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="btn-nav btn-register">Register</button>
+          </li>
+            </ul>
+              <!-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+              </li> -->
+            </div>
+          </div>
+        </div>
+      </nav>
+    <div class="home-container" >
+      <div class="social-container">
+        <div ><img src="/resources/insta.png" width="40px" class="social"></div>
+        <div><img src="/resources/twitter.svg" width="40px" class="social"></div>
+        <div><img src="/resources/linkedin.svg" width="40px" class="social"></div>
+        <div><img src="/resources/mail.svg" width="40px" class="social"></div>
+      </div>
+      <div class="home">
+        <div class="logo"><img src="/resources/ELECTRonics & Iot club.png" ></div>
+      </div>
+      <div class="intro-logo-container"><div class="intro-logo"><img src="/resources/electronics_club_iitism_dhanbad_logo (1) (1).png" width="300px"/></div></div>
+      <div class="intro-container">
+      <div class="intro"><h1 style="font-family: 'Oxanium', sans-serif; font-weight: bold; margin-bottom: 10px; text-align: center; font-size: 50px;color: rgb(61, 61, 61);">ABOUT <span style="color: rgb(13, 0, 189);">The Club</span></h1><span style="font-family:  Montserrat,sans-serif ;font-size: 22px; font-weight:400;">Electronics and IoT Club where innovation 
+        meets passion! Explore cutting-edge technology, collaborate on exciting projects, and dive into the future of electronics. Whether 
+        you're a tech enthusiast or a future engineer, we empower you to create, connect, and revolutionize the world of electronics and IoT. 
+        Join us for hands-on workshops, industry expert talks, and a community that thrives on curiosity and creativity.</span></div>
+      </div>
+    </div>
+    
+    <div class="break"></div>
+    
+   <div class="teams">
+    <div class="team_heading">
+      <div><span style="color: white">MEET</span><span style="color: rgb(0, 68, 255);"> The Team</span></div>
+    </div>
+    <div class="carousel">
+    <div class="list">
+      <div class="item 1" >
+        <img src="/resources/samples/images (1).avif"/>
+        <div class="content">
+          <div class="title">
+            TEAM 2022
+          </div>
+        <div class="buttons">
+          <button>KNOW MORE</button>
+        </div>
+      </div>
+      </div>
+      <div class="item 2">
+        <img src="/resources/samples/sampl.avif"/>
+        <div class="content">
+          <div class="title">
+            TEAM 2023
+          </div>
+        <div class="buttons">
+          <button>KNOW MORE</button>
+        </div>
+        </div>
+      </div>
+      <div class="item 3">
+        <img src="/resources/samples/images.avif"/>
+        <div class="content">
+          <div class="title">
+            TEAM 2024
+          </div>
+        <div class="buttons">
+          <button>KNOW MORE</button>
+        </div>        
+        </div>
+      </div>
+    </div>
+    <div class="thumbnail">
+        <div class="item 1">
+          <img src="/resources/samples/images (1).avif"/>
+          <div class="content">
+            <div class="title">
+              TEAM 2022
+            </div>         
+          </div>
+        </div>
+        <div class="item 2">
+          <img src="/resources/samples/sampl.avif"/>
+          <div class="content">
+            <div class="title">
+              TEAM 2023
+            </div>         
+          </div>
+        </div>
+        <div class="item 3">
+          <img src="/resources/samples/images.avif"/>
+          <div class="content">
+            <div class="title">
+              TEAM 2024
+            </div>    
+          </div>
+        </div>    
+    </div>
+    <div class="arrows">
+      <button id="prev"><</button>
+      <button id="next">></button>
+    </div>
+    <!-- time running -->
+    <div class="time"></div>
+  </div>
+   </div>
+
+  <div class="contact-section" id="contact">
+    <div class="contact-details">
+        <p id="contact-text" class="hover-difference">
+            Get directly in touch with us:
+        </p>
+        <div class="contact-icons hover-difference">
+            <a href="https://www.facebook.com/erciitb"><i class="fab fa-facebook-square"></i></a>
+            <a href="https://www.instagram.com/erc.iitb/"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:erciitbombay@gmail.com"><i class="far fa-envelope"></i></a>
+        </div>
+        <a href="mailto:elecrobo.club@iitb.ac.in" id="contact-mail" class="hover-difference">elecrobo.club@iitb.ac.in</a>
+        <button class="contact-form-button">
+            Message us
+        </button>
+        <!-- <button class="contact-form-button form-submit no-display" type="submit" form="validated-form" value="Submit">
+    Submit
+  </button> -->
+        <!-- <div class="contact-form-error"></div> -->
+    </div>
+    <div class="contact-form-map-mix-outer">
+        <div class="contact-form-map-mix-inner">
+            <div class="contact-map">
+                <!-- Google Maps Integration -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3169.6786880670256!2d72.9138437580561!3d19.13376545835707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c7f5e4ac7efd%3A0xd9d02f29b4617fb4!2sTinkerers'%20Laboratory!5e0!3m2!1sen!2sin!4v1597995010048!5m2!1sen!2sin" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+            <div class="contact-form">
+
+                <form action="./form-submit.php" method="POST" id="validated-form">
+                    <div class="contact-form-element">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="contact-user-name" required="">
+                    </div>
+                    <div class="contact-form-element">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="contact-user-email" required="">
+                    </div>
+                    <div class="contact-form-element">
+                        <label for="message">Message</label>
+                        <textarea name="message" maxlength="10000" cols="30" rows="4" id="contact-user-message"></textarea>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="/script.js"></script>
+    <script src="/app.js"></script>
+
+
+  
+
+</body>
+     
+</html>
